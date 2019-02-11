@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
+import "typeface-roboto";
 import './App.css';
+
 
 function Price({ title, amount }) {
 
   return (
     <div>
-      <h3>{title}</h3>
-      <p>{amount}</p>
+      <span hidden>{title}</span>
+      <span className="title title__secondary">${amount}</span>
     </div>
   )
 }
@@ -18,11 +20,11 @@ function Quantity({ amount, addQuantity, removeQuantity, updateQuantity }) {
   }
 
   return (
-    <div>
-      <h3>Quantity</h3>
-      <input type="text" onChange={quantityChanged} value={ amount } />
-      <button onClick={addQuantity}>+</button>
-      <button onClick={removeQuantity}>-</button>
+    <div className="controls">
+      <span hidden>Quantity</span>
+      <button className="button button__quantity effect__pop" onClick={addQuantity}>+</button>
+      <input className="control control__quantity" type="text" onChange={quantityChanged} value={ amount } />
+      <button className="button button__quantity effect__pop" onClick={removeQuantity}>-</button>
     </div>
   )
 }
@@ -34,10 +36,6 @@ function Product( { item }) {
   const isNumeric = (n) => {
     return !isNaN(parseFloat(n)) && isFinite(n);
   }
-
-  const calculateTotal = () => {
-    return product.quantity * product.price;
-  };
 
   const addQuantity = () => {
     const newProduct = {
@@ -72,13 +70,12 @@ function Product( { item }) {
   }
 
   return (
-    <div className="product">
-      <h3>{ product.title} </h3>
-      <p>{ product.description }</p>
+    <li className="product effect__pop">
+      <span className="title">{ product.title} </span>
       <Price title="Price" amount={product.price} />
+      <p className="description">{ product.description }</p>
       <Quantity amount={product.quantity} addQuantity={addQuantity} removeQuantity={removeQuantity} updateQuantity={updateQuantity} />
-      <Price title="Total" amount={calculateTotal()} />
-    </div>
+    </li>
   )
 }
 
@@ -99,16 +96,19 @@ function App() {
     }
   ];
 
-  const [products, setProducts] = useState(productData);
+  const [products] = useState(productData);
 
   return (
     <main className="cart">
-      <h1>React Product</h1>
-      <p>Having fun playing with React Hooks while building this product/cart form.</p>
-      <div className="products">
+      <h3 className="title title__primary">Cart</h3>
+      <ul className="products">
         {products.map( (product,index) => (
           <Product key={index} item={product} />
         ))}
+      </ul>
+      <div className="actions">
+        <span className="title title__primary">Total: $0.00</span>
+        <button className="button button__checkout title title__primary">Checkout</button>
       </div>
     </main>
   )

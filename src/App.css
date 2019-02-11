@@ -1,13 +1,141 @@
 body {
-  background-color: rgb(80, 168, 215);
+  background-color: #fafafa;
+  font-family: 'Roboto', sans-serif;
 }
 
 .cart {
   margin: 20px;
 }
+
+  @media all and (min-width: 600px) {
+    .cart {
+      width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+.products {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 .product {
   padding: 20px;
-  border: 1px solid black;
+  border-radius: 12px;
   margin: 20px 0;
   background-color: rgb(255,255,255);
+  display: flex;
+  flex-direction: column;
 }
+
+.product > * {
+  flex: 1 1 auto;
+}
+
+.effect__pop {
+
+  box-shadow: 0 3px 7px rgba(0,0,0,0.1);
+}
+
+.title {
+  color: #141414;
+  font-weight: 600;
+  
+}
+
+.title__primary {
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.title__secondary {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.description {
+  font-size: 14px;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.button__quantity {
+
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  line-height: 10px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 800;
+  border-width: 0;
+  color: #333333;
+  padding: 0;
+}
+
+  .button__quantity:hover,
+  .button__quantity:active,
+  .button__quantity:focus {
+    color: #fafafa;
+    background-color: #141414;
+  }
+
+.button__checkout {
+  display: inline-block;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 14px;
+  padding: 12px 7px;
+  font-weight: 600;
+  background-color: #333333;
+  color: #fafafa;
+}
+
+  @media all and (min-width: 600px) {
+    .button__checkout {
+      width: auto;
+      padding: 12px 32px;
+    }
+  }
+
+.controls {
+  text-align: right; 
+}
+
+.control__quantity {
+
+  border: 1px solid #efefef;
+  text-align: center;
+  width: 30px;
+  margin: 0 10px;
+  font-weight: 800;
+  font-size: 12px;
+  padding: 3px;
+  border-radius: 3px;
+}
+
+  .control__quantity:hover,
+  .control__quantity:active,
+  .control__quantity:focus {
+    border: 1px solid #ccc;
+  }
+
+.actions {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+  @media all and (min-width: 600px) {
+    .actions {
+      text-align: right;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
